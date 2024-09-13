@@ -12,7 +12,7 @@ Cozy feeds requires a server accessible on the web. If you're a devloper, skip t
 
 To run Cozy Feeds locally, follow these steps: 
 
-1. Close the repo: `git clone https://github.com/itsbdell/cozy-feeds.git`
+1. Clone the repo: `git clone https://github.com/itsbdell/cozy-feeds.git`
 2. Change into the cozy-feeds directory: `cd cozy-feeds`
 3. Install dependencies: `npm i`
 4. Run the app: `npm run dev`
