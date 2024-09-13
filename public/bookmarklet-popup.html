@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cozy Feeds</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        select, input, button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Add to Cozy Feeds</h2>
+    <select id="feedSelect">
+        <option value="new">Create New Feed</option>
+    </select>
+    <input type="text" id="newFeedName" placeholder="New Feed Name" style="display:none;">
+    <button onclick="addToFeed()">Add to Feed</button>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentUrl = urlParams.get('url');
+
+        async function loadFeeds() {
+            try {
+                const response = await fetch('/feeds');
+                const feeds = await response.json();
+                const feedSelect = document.getElementById('feedSelect');
+                feeds.forEach(feed => {
+                    const option = document.createElement('option');
+                    option.value = feed.id;
+                    option.textContent = feed.name;
+                    feedSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading feeds:', error);
+                alert('Error loading feeds. Please try again.');
+            }
+        }
+
+        function toggleNewFeedInput() {
+            const feedSelect = document.getElementById('feedSelect');
+            const newFeedName = document.getElementById('newFeedName');
+            newFeedName.style.display = feedSelect.value === 'new' ? 'block' : 'none';
+        }
+
+        async function addToFeed() {
+            const feedSelect = document.getElementById('feedSelect');
+            const newFeedName = document.getElementById('newFeedName');
+            const feedId = feedSelect.value === 'new' ? null : feedSelect.value;
+            const feedName = feedSelect.value === 'new' ? newFeedName.value : null;
+
+            try {
+                const response = await fetch('/api/bookmarklet', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url: currentUrl, feedId, feedName }),
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message);
+                    window.close();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error adding to feed:', error);
+                alert('An error occurred. Please try again.');
+            }
+        }
+
+        document.getElementById('feedSelect').addEventListener('change', toggleNewFeedInput);
+        loadFeeds();
+    </script>
+</body>
+</html>

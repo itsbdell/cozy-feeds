@@ -1,0 +1,8 @@
+
+spec:
+ name: cozy-feeds
+ static_sites:
+ - git:
+     branch: main
+     repo_clone_url: https://github.com/itsbdell/cozy-feeds.git
+   name: cozy-feeds

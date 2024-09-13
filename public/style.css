@@ -1,0 +1,669 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  max-width: 700px;
+  margin: auto;
+  overflow: hidden;
+  padding: 20px;
+  min-height: calc(100vh - 60px); /* Adjust based on your footer height */
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  -webkit-text-stroke: 3px white;
+  font-size: 80px;
+  margin-bottom: 0px;
+}
+
+.logo {
+  border-radius: 40px;
+  border-color: white;
+  border-width: 3px;
+  width: 60px;
+  height: 60px;
+  margin-right: 0;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+#tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background-color: #f0f0f0;
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  left: 10px; /* Adjust this value to move the circle closer to or further from the left edge */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.tab.active::before {
+  border-color: #fff;
+  background-color: #4CAF50;
+}
+
+form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="number"],
+input[type="time"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#timezone {
+  width: auto;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 0;
+}
+
+#timezone:focus {
+  width: 250px;
+}
+
+#timezone::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="text"]::-webkit-input-placeholder {
+  color: transparent;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background: #555;
+}
+
+#result,
+#manageFeedsSection,
+#editFeedSection {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#feedUrl {
+  word-break: break-all;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.feed-info,
+.feed-status {
+  margin-bottom: 20px;
+}
+
+.feed-info strong,
+.feed-status strong {
+  display: inline-block;
+  min-width: 100px;
+}
+
+.copy-button {
+  display: inline-block;
+  width: auto;
+  padding: 5px 10px;
+  margin-top: 5px;
+  font-size: 0.9em;
+  background-color: #ff9800;
+  color: white;
+}
+
+.copy-button:hover {
+  background-color: #f57c00;
+}
+
+.feed-item {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 6px 8px; /* Reduced top and bottom padding */
+  margin-bottom: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.feed-item-number {
+  margin-right: 15px; /* Increase space between number and favicon */
+  min-width: 20px; /* Ensure consistent width for numbers */
+  text-align: right;
+}
+
+.feed-item-content {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.feed-item-title {
+  font-size: 0.95em;
+  font-weight: bold;
+  margin: 0 0 1px 0; /* Reduced bottom margin */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.url-preview {
+  display: flex;
+  align-items: center;
+}
+
+.url-preview img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.preview-content {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.preview-source {
+  font-size: 0.8em;
+  color: #0066cc;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  line-height: 1.2; /* Added to reduce space between lines */
+}
+
+.preview-source:hover {
+  text-decoration: underline;
+}
+
+.delete-url {
+  background-color: transparent;
+  color: #999;
+  border: 1px solid #999;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.delete-url:hover {
+  background-color: #ff4d4d;
+  color: white;
+  border-color: #ff4d4d;
+}
+
+.interval-settings-container {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.interval-settings {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.interval-settings input[type="number"],
+.interval-settings input[type="time"],
+.interval-settings input[type="text"],
+.interval-settings select {
+  width: auto;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 0;
+  height: 32px; /* Set a consistent height */
+  box-sizing: border-box;
+}
+
+.interval-settings input[type="number"] {
+  width: 50px;
+}
+
+.interval-settings input[type="time"] {
+  width: 100px;
+}
+
+.interval-settings select {
+  max-width: 250px;
+  padding-right: 25px; /* Add space for the dropdown arrow */
+}
+
+.info-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.info-icon {
+  cursor: pointer;
+  color: #666;
+  border: 1px solid #666;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.help-text {
+  display: none;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.embed-display textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  padding: 5px;
+  resize: vertical;
+}
+
+.valid-url {
+  border-color: green;
+}
+
+.invalid-url {
+  border-color: #ff4d4d;
+  background-color: #ffeeee;
+}
+
+.url-feedback {
+  font-size: 0.8em;
+  margin-top: 2px;
+}
+
+.url-feedback.error {
+  color: #ff4d4d;
+  font-size: 0.8em;
+  margin-top: 2px;
+}
+
+.about-section {
+  margin-top: auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+  border-top: 1px solid #ddd; /* Add this line */
+}
+
+.feedback {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.feedback.error {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.feedback.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.feedback.info {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.repeat-option {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.repeat-option label {
+  margin-left: 5px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  h1, h2 {
+    font-size: 1.5em;
+  }
+
+  .interval-settings {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .interval-settings > * {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .interval-settings input[type="number"],
+  .interval-settings input[type="time"],
+  .interval-settings input[type="text"],
+  .interval-settings select,
+  #timezone,
+  #editTimezone {
+    width: 100%;
+    max-width: none;
+    height: 40px; /* Slightly larger on mobile for better touch targets */
+  }
+
+  .preview-item {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .preview-icon {
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+
+  .preview-content {
+    flex: 1;
+  }
+
+  .preview-title {
+    font-size: 1em;
+  }
+
+  .preview-author,
+  .preview-site {
+    font-size: 0.8em;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+  }
+
+  #urlInputContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #urlInputContainer input[type="url"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .url-input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  #urlInputContainer input[type="url"] {
+    flex-grow: 1;
+    margin: 0;
+    height: 40px;
+    box-sizing: border-box;
+  }
+
+  #addUrlButton, #editAddUrlButton {
+    height: 40px;
+    padding: 0 15px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 600px) {
+    .url-input-group {
+      display: flex;
+      align-items: center;
+    }
+
+    #urlInputContainer input[type="url"] {
+      flex-grow: 1;
+      margin: 0;
+      height: 40px;
+      box-sizing: border-box;
+    }
+
+    #addUrlButton, #editAddUrlButton {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      font-size: 24px;
+      margin-left: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    #addUrlButton span, #editAddUrlButton span {
+      display: none;
+    }
+
+    #addUrlButton::after, #editAddUrlButton::after {
+      content: "+";
+    }
+  }
+
+  #editTimezone,
+  #timezone {
+    width: 100%;
+    max-width: none;
+  }
+
+  .info-icon-container {
+    align-self: flex-start;
+    margin-top: 5px;
+  }
+}
+
+#generatedFeedSection {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.feed-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action-btn {
+  display: inline-block;
+  width: auto;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: #555;
+}
+
+.feed-details {
+  margin-bottom: 15px;
+}
+
+.feed-urls {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feed-urls li {
+  margin-bottom: 5px;
+  word-break: break-all;
+}
+
+#addedUrls,
+#editAddedUrls {
+  margin-top: 15px; /* Add space above the feed items */
+}
+
+#editTimezone,
+#timezone,
+.interval-settings select {
+  width: auto;
+  max-width: 250px; /* Limit the width of timezone selectors */
+}
+
+#editFeedSection .interval-settings select {
+  width: auto;
+  max-width: 250px;
+}
+
+/* Add these styles at the end of your CSS file */
+
+.generated-feed-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.generated-feed-item h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.feed-details p {
+    margin: 5px 0;
+}
+
+.feed-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.action-btn {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: #555;
+}
+
+.feed-items {
+    margin-top: 10px;
+}
+
+#feedsList .feed-item {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COZY FEEDS - A Static Feed Generator</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <h1 id="cozy-feeds" class="title">C<img src="favicon.png" alt="Cozy Feeds Logo" class="logo">ZY FEEDS</h1>
+        <h3 class="subtitle">A Static Feed Generator</h3>
+</div>
+        <div id="tabs">
+            <button id="createTabBtn" class="tab active">Create Feed</button>
+            <button id="manageTabBtn" class="tab">Manage Feeds</button>
+        </div>
+
+        <div id="feedback" class="feedback" style="display: none"></div>
+
+        <div id="createFeedSection">
+            <form id="feedForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="feedName">Feed Name:</label>
+                        <input type="text" id="feedName" name="name" required>
+                    </div>
+                    <!-- Removed the createdBy input field -->
+                </div>
+
+                <div id="urlInputContainer">
+                    <label for="urlInput">Feed Items:</label>
+                    <div class="url-input-group">
+                        <input type="url" id="urlInput" placeholder="Enter URL">
+                        <button type="button" id="addUrlButton"><span>Add +</span></button>
+                    </div>
+                    <div id="addedUrls"></div>
+                </div>
+
+                <div class="interval-settings-container">
+                    <div class="interval-settings">
+                        Every 
+                        <input type="number" id="days" name="days" min="1" max="365" value="1" required>
+                        days at
+                        <input type="time" id="time" name="time" required>
+                        <select id="timezone" name="timezone" required>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                        <div class="info-icon-container">
+                            <span class="info-icon" id="intervalInfoIcon">i</span>
+                        </div>
+                        <div class="repeat-option">
+                            <input type="checkbox" id="repeat" name="repeat">
+                            <label for="repeat">Repeat?</label>
+                        </div>
+                    </div>
+                    <div id="helpText" class="help-text" style="display: none">
+                        Set how often your feed updates. Choose any interval between 1 and 365 days. 
+                        The feed will update at the specified time in the selected time zone. 
+                        For example, 'Every 7 days at 9:00 AM EST' will update your feed weekly at 9 AM Eastern Standard Time.
+                    </div>
+                </div>
+
+                <button type="submit">Generate Feed</button>
+            </form>
+            
+            <div id="aboutThisSite" class="about-section">
+                About this site: Cozy Feeds is a simple tool to create custom RSS feeds from your favorite websites.
+                Add URLs, set update intervals, and generate your personalized feed in seconds.
+            </div>
+        </div>
+
+        <div id="generatedFeedSection" style="display: none">
+            <h2>Generated Feed</h2>
+            <div id="generatedFeedContent"></div>
+        </div>
+
+        <div id="result" style="display: none"></div>
+
+        <div id="manageFeedsSection" style="display: none">
+            <h2>Your Feeds</h2>
+            <div id="feedsList"></div>
+        </div>
+
+        <div id="editFeedSection" style="display: none"></div>
+    </div>
+
+    <datalist id="timezones"></datalist>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+    <script src="script.js?v=2"></script>
+</body>
+</html>

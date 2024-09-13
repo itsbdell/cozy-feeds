@@ -1,0 +1,100 @@
+                                                                                                                                                                        <!DOCTYPE html>
+                                                                                                                                                                        <html lang="en">
+                                                                                                                                                                        <head>
+                                                                                                                                                                            <meta charset="UTF-8">
+                                                                                                                                                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                                                                                                                                                            <title><%= feed.name %> - FarSS Embed</title>
+                                                                                                                                                                            <style>
+                                                                                                                                                                                body {
+                                                                                                                                                                                    font-family: Arial, sans-serif;
+                                                                                                                                                                                    margin: 0;
+                                                                                                                                                                                    padding: 10px;
+                                                                                                                                                                                    background-color: #1e1e1e;
+                                                                                                                                                                                    display: flex;
+                                                                                                                                                                                    justify-content: center;
+                                                                                                                                                                                    align-items: center;
+                                                                                                                                                                                    min-height: 100vh;
+                                                                                                                                                                                }
+                                                                                                                                                                                .container {
+                                                                                                                                                                                    max-width: 400px;
+                                                                                                                                                                                    width: 100%;
+                                                                                                                                                                                    background-color: #2d2d2d;
+                                                                                                                                                                                    border-radius: 10px;
+                                                                                                                                                                                    padding: 20px;
+                                                                                                                                                                                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                                                                                                                                                                }
+                                                                                                                                                                                .feed-title {
+                                                                                                                                                                                    font-size: 18px;
+                                                                                                                                                                                    font-weight: bold;
+                                                                                                                                                                                    margin-bottom: 15px;
+                                                                                                                                                                                    color: #ffffff;
+                                                                                                                                                                                    display: flex;
+                                                                                                                                                                                    align-items: center;
+                                                                                                                                                                                    justify-content: space-between;
+                                                                                                                                                                                }
+                                                                                                                                                                                .feed-item {
+                                                                                                                                                                                    background-color: #3a3a3a;
+                                                                                                                                                                                    border-radius: 8px;
+                                                                                                                                                                                    padding: 12px;
+                                                                                                                                                                                    margin-bottom: 10px;
+                                                                                                                                                                                    display: flex;
+                                                                                                                                                                                    align-items: center;
+                                                                                                                                                                                    transition: background-color 0.3s ease;
+                                                                                                                                                                                }
+                                                                                                                                                                                .feed-item:hover {
+                                                                                                                                                                                    background-color: #4a4a4a;
+                                                                                                                                                                                }
+                                                                                                                                                                                .feed-item img {
+                                                                                                                                                                                    width: 16px;
+                                                                                                                                                                                    height: 16px;
+                                                                                                                                                                                    border-radius: 2px;
+                                                                                                                                                                                    margin-right: 12px;
+                                                                                                                                                                                }
+                                                                                                                                                                                .feed-item-content {
+                                                                                                                                                                                    flex-grow: 1;
+                                                                                                                                                                                }
+                                                                                                                                                                                .feed-item-title {
+                                                                                                                                                                                    font-weight: bold;
+                                                                                                                                                                                    margin-bottom: 3px;
+                                                                                                                                                                                    color: #ffffff;
+                                                                                                                                                                                }
+                                                                                                                                                                                .feed-item-author, .feed-item-site {
+                                                                                                                                                                                    font-size: 0.8em;
+                                                                                                                                                                                    color: #b0b0b0;
+                                                                                                                                                                                }
+                                                                                                                                                                                .follow-button {
+                                                                                                                                                                                    background-color: #4CAF50;
+                                                                                                                                                                                    border: none;
+                                                                                                                                                                                    color: white;
+                                                                                                                                                                                    padding: 5px 10px;
+                                                                                                                                                                                    text-align: center;
+                                                                                                                                                                                    text-decoration: none;
+                                                                                                                                                                                    display: inline-block;
+                                                                                                                                                                                    font-size: 14px;
+                                                                                                                                                                                    margin-left: 10px;
+                                                                                                                                                                                    cursor: pointer;
+                                                                                                                                                                                    border-radius: 4px;
+                                                                                                                                                                                }
+                                                                                                                                                                            </style>
+                                                                                                                                                                        </head>
+                                                                                                                                                                        <body>
+                                                                                                                                                                            <div class="container">
+                                                                                                                                                                                <div class="feed-title">
+                                                                                                                                                                                    <%= feed.name %>
+                                                                                                                                                                                    <a href="<%= feed.url %>" target="_blank" class="follow-button">Follow</a>
+                                                                                                                                                                                </div>
+                                                                                                                                                                                <% urlsWithMetadata.forEach(item => { %>
+                                                                                                                                                                                    <a href="<%= item.url %>" target="_blank" style="text-decoration: none; color: inherit;">
+                                                                                                                                                                                        <div class="feed-item">
+                                                                                                                                                                                            <img src="<%= item.metadata.favicon %>" alt="<%= item.metadata.siteName %> favicon">
+                                                                                                                                                                                            <div class="feed-item-content">
+                                                                                                                                                                                                <div class="feed-item-title"><%= item.metadata.title %></div>
+                                                                                                                                                                                                <div class="feed-item-author"><%= item.metadata.author %></div>
+                                                                                                                                                                                                <div class="feed-item-site"><%= item.metadata.siteName %></div>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                    </a>
+                                                                                                                                                                                <% }); %>
+                                                                                                                                                                            </div>
+                                                                                                                                                                        </body>
+                                                                                                                                                                        </html>
