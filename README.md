@@ -1,4 +1,7 @@
 # Cozy Feeds
+
+![Cozy Feeds!](https://github.com/itsbdell/cozy-feeds/blob/main/public/favicon.png)
+
 Generate your own RSS feeds on your own schedule. Customize the content, set a schedule, and resurface old favorites. Cozy Feeds is the most customizable RSS feed service on the planet. 
 
 And it's cozy. 
