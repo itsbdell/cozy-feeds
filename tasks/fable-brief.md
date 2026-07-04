@@ -40,6 +40,7 @@ Because the core is really "a curated, embeddable playlist of things," the same 
 - **Two item types from the start (or a clean path to the second):** content/links (Cozy Feeds proper) and prompts/skills (the playlist-of-skills idea).
 - **Keep what made it cozy:** curation, calm, ownership, scheduled resurfacing as an option. Don't turn it into another aggregator.
 - **Honest RSS or a better resurfacing mechanic** — your call, but decide it deliberately.
+- **The build lands in a NEW repo, not this one.** This repo holds the old prototype and this brief only — read from it, don't build in it. The new project gets a fresh name (TBD) and a clean repo. Until a name is chosen, use a clearly-temporary working name and keep it easy to rename later (don't bake the placeholder into package names, routes, DB identifiers, etc. in ways that are painful to change).
 
 ### Taste references
 
@@ -51,6 +52,8 @@ Because the core is really "a curated, embeddable playlist of things," the same 
 ## PART 2 — DISCOVERY PROMPT (paste this to Fable)
 
 > I'm handing you a project to rethink and rebuild from scratch. Read the Context section above first — it describes a prototype called **Cozy Feeds** and where I want it to go. Don't rebuild the prototype; rebuild the *ambition*.
+>
+> **This repo is read-only reference.** It holds the old prototype and this brief. The rebuild goes in a **brand-new repo** with a fresh name (TBD — I'll name it later). During discovery, don't write any build code here; when we move to building, scaffold the new project in its own repo under a clearly-temporary working name that's cheap to rename (keep the placeholder out of package names, routes, and DB identifiers where a later rename would hurt).
 >
 > **The vision, in one line:** a beautifully designed, embeddable, shareable "playlist" primitive for curated content — Spotify playlists, but for the things a person reads and cares about — with an optional slow-drip resurfacing schedule, multi-user, and a clean path to a second item type (playlists of AI prompts/skills).
 >
